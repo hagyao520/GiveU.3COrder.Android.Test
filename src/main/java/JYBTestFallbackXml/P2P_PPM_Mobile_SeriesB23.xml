@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<unit name="P2P_PPM_Mobile_Series_B" desc="P2P_PPM模式下兜底(二十三)用户购买手机系列B产品的测试场景点">
+    
+    <!--【操作注意事项】
+        0.执行Case前,需设置城市所绑定的合作模式,当前为"P2P_PPM"
+        1.执行Case前,需设置登录账号和密码,当前账号为"666666",密码为"612426"
+        2.执行Case前,需设置商品门店,当前门店为"11000088888 - 安科达科技有限公司（门店名称）"
+        3.执行Case前,需设置商品类型,当前类型为"手机"
+        4.执行Case前,需设置产品版本,当前类型为"系列A"
+        5.执行Case前,需设置商品总额,当前总额为"5000"
+        6.执行Case前,需设置首付总额,当前总额为"2000"
+        7.执行Case前,需设置分期期数,当前期数为"18"期
+        8.执行Case前,需设置申请时间,当前时间为"2017-09-14"
+        9.执行Case前,需设置首次还款日,当前还款日为"2017年10月14日"
+        10.执行Case前,需设置期数序号,当前序号为"18期"
+        11.执行Case前,需设置每期还款额,当前还款额为"317.0"
+        12.执行Case前,需设置还款日,当前还款日为"2019.03.14",根据所选择的分期数定义,一般为（申请时间的月份+分期数）
+        13.执行Case前,需设置身份证姓名,当前姓名为"时雪"
+        14.执行Case前,需设置身份证号码,当前身份证号码为"141023198202231927"
+    -->
+    <case 
+        name="前置条件" 
+        desc="验证在数据库中,执行对应SQL语句,可以正常执行成功">
+        <step action="db-update" value="update cs_credit set STATUS='t' where ID_PERSON=16542681" desc="进行数据库操作,修改当前用户所有的合同为取消状态"/> 
+        <step action="db-delete" value="delete cs_creditmodel_city where city in('其他','北京','') and is_wallet=0" desc="进行数据库操作,删除当前用户对应城市所绑定的合同模式,实现解绑操作"/> 
+        <step action="db-insert" value="insert into cs_creditmodel_city(city,credit_model,status,update_user,update_time,is_wallet) values('北京','P2P_PPM',1,100000,sysdate,0)" desc="进行数据库操作,插入当前用户对应城市所绑定的合同模式,实现绑定操作"/>
+        <step action="db-delete" value="delete from dafy_sales.cs_contact where ID_PERSON=16542681" desc="进行数据库操作,删除当前用户之前提单所填写的家庭联系人信息"/> 
+        <step action="db-delete" value="delete from dafy_sales.Cs_Other_person where ID_PERSON=16542681" desc="进行数据库操作,删除当前用户之前提单所填写的其他联系人信息"/>
+    </case>
+  
+	<case 
+	    name="case1" 
+	    desc="验证在新建订单界面,选择输入对应产品信息,点击下一步按钮后,可以正常进入产品列表界面">
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_pwd" value="612426" desc="输入正确登录密码"/>
+	    <step action="click" locator="resource-id=com.giveu.corder:id/tv_login" desc="点击确认按钮"/>
+     	<step action="click" locator="text=商品门店" desc="点击商品门店选项"/>
+		<step action="click" locator="text=11000088888 - 安科达科技有限公司（门店名称）" desc="选择安科达科技有限公司商品门店"/>
+		<step action="click" locator="text=商品类型" desc="点击商品类型选项"/>
+		<step action="click" locator="text=手机" desc="选择手机"/>
+		<step action="click" locator="text=产品版本" desc="点击产品版本选项"/>
+		<step action="click" locator="text=系列B" desc="选择系列B"/>
+		<step action="click" locator="text=产品类型" desc="点击产品类型选项"/>
+		<step action="click" locator="text=非学生产品" desc="选择非学生产品"/>
+		<step action="input" locator="text=请输入商品总额" value="5000" desc="输入商品总额2000"/>
+		<step action="input" locator="text=请输入首付总额" value="1000" desc="输入首付总额1000"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>	
+		<step action="slide-down" details="duration:500;num:2;" desc="以每次500毫秒的时间,向下滑动2次"/>
+		<step action="check" locator="text=选择分期" value="选择分期" message="进入产品列表界面失败(实际结果和预期结果不一致)" screenshot="case_15" desc="检查在新建订单界面,选择输入对应产品信息,点击下一步按钮后,是否可以正常进入产品列表界面"/>			
+	</case>
+		
+	<case 
+	    name="case2" 
+	    desc="验证在产品列表界面,选择对应产品信息,点击下一步按钮后,可以正常进入商品信息界面">	
+		<step action="click" locator="text=B_MOB2_A2" desc="选择产品代码为B_MOB2_A2的产品"/>
+		<step action="slide-up" details="duration:500;num:5;" desc="以每次500毫秒的时间,向上滑动5次"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="check" locator="text=商品类型" value="商品类型" message="进入商品信息界面失败(实际结果和预期结果不一致)" screenshot="case_16" desc="检查在产品列表界面,选择对应产品信息,点击下一步按钮后,是否可以正常进入商品信息界面"/>					
+	</case>
+	
+	<case 
+	    name="case3" 
+	    desc="验证在商品信息界面,选择输入对应商品信息,点击下一步按钮后,可以正常进入客户信息界面">			
+		<step action="click" locator="text=商品小类" desc="点击商品小类选项"/>
+		<step action="click" locator="text=手机" desc="选择手机"/>
+		<step action="click" locator="text=商品品牌" desc="点击商品品牌选项"/>
+		<step action="click" locator="text=三星" desc="选择三星"/>
+		<step action="input" locator="text=请输入商品型号" value="GALAXY S7" desc="输入商品型号GALAXY S7"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/switch_insurance" desc="点击勾选手机健康服务费选项"/>
+		<step action="slide-up" details="duration:500;num:1;" desc="以500毫秒滑动时间,向上滑动1次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/switch_power" desc="点击勾选手机延保服务费选项"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="客户信息" message="进入客户信息界面失败(实际结果和预期结果不一致)" screenshot="case_17" desc="检查在商品信息界面,选择对应商品信息,点击下一步按钮后,是否可以正常进入客户信息界面"/>					
+	</case>			
+		
+	<case 
+	    name="case4" 
+	    desc="验证在客户信息界面,上传输入对应客户身份证正反面照片信息,点击生成订单按钮后,可以正常进入基本信息界面">	
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_loading_front" desc="点击请拍摄身份证正面选项" />
+		<step action="click" locator="resource-id=com.giveu.corder:id/imbtn_takepic" desc="点击拍照按钮" />
+		<step action="wait-forced" value="3000" desc="强制等待3秒"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/tv_name_front" value="兜底二十三"  desc="输入身份证姓名" />
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_idcard_front" value="632801199501132416" desc="输入身份证号码" />
+		<step action="click" locator="text=所在省市区:" desc="点击所在省市区选项"/>
+		<step action="click" locator="text=确定" desc="点击确定按钮"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/tv_address_front" desc="清空身份证详细地址" />		
+		<step action="input" locator="resource-id=com.giveu.corder:id/tv_address_front" value="四川省内江市襄汾县古城镇古城中学"  desc="输入身份证详细地址" />
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_loading_back" desc="点击请拍摄身份证反面选项" />
+		<step action="click" locator="resource-id=com.giveu.corder:id/imbtn_takepic" desc="点击拍照按钮" />
+		<step action="wait-forced" value="3000" desc="强制等待3秒"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_office_back" value="襄汾县公安局" desc="输入身份证发证机关" />
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_date_back" desc="清空身份证有效期" />
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_date_back" value="2008/03/02-2028/03/02" desc="输入身份证有效期" />
+		<step action="click" locator="text=生成订单" desc="点击生成订单按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="基本信息" message="进入基本信息界面失败(实际结果和预期结果不一致)" screenshot="case_18" desc="检查在客户信息界面,上传输入对应客户身份证正反面照片信息后,点击生成订单按钮后,是否可以正常进入基本信息界面"/>
+	</case>
+	
+	<case 
+	    name="case5" 
+	    desc="验证在基本信息界面,选择输入对应客户基本信息,点击下一步按钮后,可以正常进入单位信息界面">
+		<step action="click" locator="text=现居住市县" desc="点击现居住市县选项"/>
+		<step action="click" locator="text=确定" desc="点击确定按钮"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view" desc="清空现居住详细地址"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view" value="小店镇黄陵街道康怡小区2栋7单元" desc="输入客户现居住详细地址"/>
+		<step action="click" locator="text=教育程度" desc="点击教育程度选项"/>
+		<step action="click" locator="text=本科" desc="选择本科"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" desc="清空个人月收入总额"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" value="8000" desc="输入客户个人月收入总额"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" desc="清空个人月支出"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" value="2000" desc="输入客户个人月支出"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[3]" desc="清空家庭月收入总额"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[3]" value="30000" desc="输入客户家庭月收入总额"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[4]" desc="清空手机号码"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[4]" value="13244721532" desc="输入客户手机号码"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[5]" desc="清空客户邮箱"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[5]" value="13244721532@qq.com" desc="输入客户邮箱"/>
+		<step action="slide-up" details="duration:500;num:1;"  desc="以每次500毫秒的时间,向上滑动1次"/>
+		<step action="click" locator="text=住房情况" desc="点击住房情况选项"/>
+		<step action="click" locator="text=自有房" desc="选择自有房"/>
+		<step action="click" locator="text=婚姻状况" desc="点击婚姻状况选项"/>
+		<step action="click" locator="text=未婚" desc="选择未婚"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="单位信息" message="进入单位信息界面失败(实际结果和预期结果不一致)" screenshot="case_19" desc="检查在客户信息界面,上传输入对应客户身份证正反面照片信息后,点击下一步按钮后,是否可以正常进入单位信息界面"/>
+	</case>
+
+	<case 
+	    name="case6" 
+	    desc="验证在单位信息界面,选择输入对应客户单位信息,点击下一步按钮后,可以正常进入联系人填写界面">
+		<step action="click" locator="resource-id=com.giveu.corder:id/toggleSwitch" desc="勾选同步现居住地址选项"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" desc="清空单位名称"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" value="即有分期" desc="输入单位名称"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" desc="清空单位电话"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" value="075588888888" desc="输入单位电话/手机"/>
+		<step action="click" locator="text=行业类别" desc="点击行业类别选项"/>
+		<step action="slide-up" details="duration:500;num:3;"  desc="以每次500毫秒的时间,向上滑动3次"/>
+		<step action="click" locator="text=金融机构、专业性事务机构" desc="选择金融机构、专业性事务机构"/>
+		<step action="click" locator="text=单位性质" desc="点击单位性质选项"/>
+		<step action="click" locator="text=私企" desc="选择私企"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[4]" desc="清空任职部门"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[4]" value="信息科技部" desc="输入单位任职部门"/>
+		<step action="slide-up" details="duration:500;num:2;"  desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="text=职位" desc="点击职位选项"/>
+		<step action="click" locator="text=专业(技术)人员" desc="选择专业(技术)人员"/>
+		<step action="click" locator="text=入职时间" desc="点击入职时间选项"/>
+		<step action="slide-down" locator="resource-id=com.giveu.corder:id/wl1" details="duration:500;num:1;amp:0.3" desc="在年份列中,向下滑动1次,选中2016年" />
+		<step action="slide-up" locator="resource-id=com.giveu.corder:id/wl2" details="duration:500;num:1;amp:0.3" desc="在月份列中,向上滑动1次,选中10月" />
+		<step action="click" locator="text=确定" desc="点击确定按钮"/>
+		<step action="click" locator="text=工作年限" desc="点击工作年限选项"/>
+		<step action="click" locator="text=1年" desc="选择1年"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="联系人填写" message="进入联系人填写界面失败(实际结果和预期结果不一致)" screenshot="case_20" desc="检查在单位信息界面,选择输入对应客户单位信息后,点击下一步按钮后,是否可以正常进入联系人填写界面"/>
+	</case>
+	
+	<case 
+	    name="case7" 
+	    desc="验证在联系人填写界面,选择输入对应客户联系人信息,点击下一步按钮后,可以正常进入绑定银行卡界面">
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view" desc="清空联系人姓名"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view" value="时光" desc="输入客户家庭联系人姓名"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" desc="清空联系人电话号码"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" value="13128751295" desc="输入客户家庭联系人手机号"/>
+		<step action="click" locator="text=与本人关系" desc="点击家庭联系人与本人关系选项"/>
+		<step action="click" locator="text=父亲" desc="选择父亲"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" desc="清空联系人姓名"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" value="时飞" desc="输入客户其他联系人姓名"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_edit_view[3]" desc="清空联系人电话号码"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[3]" value="13128751296" desc="输入客户其他联系人手机号"/>
+		<step action="click" locator="text=与本人关系[1]" desc="点击其他联系人与本人关系选项"/>
+		<step action="click" locator="text=兄弟" desc="选择兄弟"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="绑定银行卡" message="进入绑定银行卡界面失败(实际结果和预期结果不一致)" screenshot="case_21" desc="检查在联系人填写界面,选择输入对应客户联系人信息后,点击下一步按钮后,是否可以正常进入绑定银行卡界面"/>
+	</case>
+	
+	<case 
+	    name="case8" 
+	    desc="验证在绑定银行卡界面,输入对应客户银行卡信息,点击下一步按钮后,可以正常进入其他信息界面">
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_cardNumber" desc="清空储蓄卡号"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/et_cardNumber" desc="点击存储卡号输入框"/>
+		<step action="akc" details="key:13" desc="点击Android系统搜狗输入法键盘,6键"/>
+		<step action="akc" details="key:9" desc="点击Android系统搜狗输入法键盘,2键"/>
+		<step action="akc" details="key:8" desc="点击Android系统搜狗输入法键盘,1键"/>
+		<step action="akc" details="key:14" desc="点击Android系统搜狗输入法键盘,7键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:9" desc="点击Android系统搜狗输入法键盘,2键"/>
+		<step action="akc" details="key:13" desc="点击Android系统搜狗输入法键盘,6键"/>
+		<step action="akc" details="key:14" desc="点击Android系统搜狗输入法键盘,7键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:16" desc="点击Android系统搜狗输入法键盘,9键"/>
+		<step action="akc" details="key:15" desc="点击Android系统搜狗输入法键盘,8键"/>
+		<step action="akc" details="key:13" desc="点击Android系统搜狗输入法键盘,6键"/>
+		<step action="akc" details="key:10" desc="点击Android系统搜狗输入法键盘,3键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:9" desc="点击Android系统搜狗输入法键盘,2键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_bankBranch" desc="点击开户行省/直辖市选项"/>
+		<step action="click" locator="text=确定" desc="点击确定按钮"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+        <step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="其他信息" message="进入其他信息界面失败(实际结果和预期结果不一致)" screenshot="case_22" desc="检查在绑定银行卡界面,输入对应客户银行卡信息后,点击下一步按钮后,是否可以正常进入其他信息界面"/>
+	</case>
+	
+	<case 
+	    name="case9" 
+	    desc="验证在其他信息界面,输入对应客户其他信息,点击下一步按钮后,可以正常进入芝麻信用认证界面">
+		<step action="click" locator="text=请选择..." desc="点击评定内部代码选项"/>
+		<step action="click" locator="text=1" desc="选择内部代码1"/>
+		<step action="input" locator="text=请输入0到200个字的销售备注" value="P2P_PPM模式下购买手机系列B产品的测试场景点" desc="输入销售备注"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="芝麻信用" message="进入芝麻信用认证界面失败(实际结果和预期结果不一致)" screenshot="case_23" desc="检查在其他信息界面,输入对应客户其他信息后,点击下一步按钮后,是否可以正常进入芝麻信用认证界面"/>
+	</case>
+	
+	<case 
+	    name="case_10" 
+	    desc="验证在芝麻信用认证界面,点击跳过认证按钮后,可以正常跳过认证并进入运营商授权认证界面">
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="运营商授权" message="进入运营商授权认证界面失败(实际结果和预期结果不一致)" screenshot="case_24" desc="检查在芝麻信用认证界面,点击跳过认证按钮后,是否可以正常跳过认证并进入运营商授权认证界面"/>
+	</case>
+	
+    <case 
+	    name="case_11" 
+	    desc="验证在运营商授权认证界面,点击跳过认证按钮后,可以正常跳过认证并进入影像证明界面">
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/top_tab_center_title" value="影像证明" message="进入影像证明界面失败(实际结果和预期结果不一致)" screenshot="case_25" desc="检查在运营商授权认证界面,点击跳过认证按钮后,是否可以正常跳过认证并进入影像证明界面"/>
+	</case>
+
+	<case 
+	    name="case_12" 
+	    desc="验证在影像证明界面,上传对应客户影像证明照片,点击确认提交按钮后,可以正常弹出请输入登录密码,以验证身份界面">
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_photo[0]" desc="点击上传征信授权照片第一个选项"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_shutter_button_internal" desc="点击拍照按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_btn_done" desc="点击拍照确定按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_photo[2]" desc="点击上传客户门店照片第一个选项"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_shutter_button_internal" desc="点击拍照按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_btn_done" desc="点击拍照确定按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="slide-up" details="duration:500;num:1;" desc="以每次500毫秒的时间,向上滑动1次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_photo[5]" desc="点击上传银行卡照片第一个选项"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_shutter_button_internal" desc="点击拍照按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_btn_done" desc="点击拍照确定按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="click" locator="text=确认提交" desc="点击确认提交按钮"/>
+		<step action="check" locator="text=请输入登录密码，以验证身份" value="请输入登录密码，以验证身份" message="弹出输入登录密码,以验证身份界面失败(实际结果和预期结果不一致)" screenshot="case_26" desc="检查在影像证明界面,上传对应客户影像证明照片,点击确认提交按钮后,是否可以正常弹出请输入登录密码,以验证身份界面"/>
+	</case>
+	
+	<case 
+	    name="case_13" 
+	    desc="验证在请输入登录密码,以验证身份界面,输入对应用户登录密码,点击确认按钮后,可以正常提交合同并进入成功提交界面">	
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_pwd" value="612426" desc="输入用户登录密码"/>
+		<step action="click" locator="text=确认" desc="点击确认按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/tv_finish" value="查看订单" message="未进入成功提交界面,提交合同失败(实际结果和预期结果不一致)" screenshot="case_27" desc="检查在请输入登录密码,以验证身份界面,输入对应用户登录密码,点击确认按钮后,是否可以正常提交合同并进入成功提交界面"/>
+	</case>
+	
+	<case
+	    name="case_14"
+	    desc="验证在成功提交界面,点击查看订单按钮后,可以正常进入订单列表-审核中列界面">
+		<step action="click" locator="text=查看订单" desc="点击查看订单按钮"/>
+		<step action="check" locator="resource-id=com.giveu.corder:id/tv_orderState[0]" value="审核中" message="进入审核中列界面失败(实际结果和预期结果不一致)" screenshot="case_28" desc="检查在成功提交界面,点击查看订单按钮后,是否可以正常进入订单列表-审核中列界面"/>
+	</case>
+</unit>

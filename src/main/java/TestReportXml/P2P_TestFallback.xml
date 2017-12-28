@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="P2P_TestFallback" parallel="false" configfailurepolicy ="continue">
+    <!---->
+    <test name="P2P_PPM模式下-兜底(一)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB1"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB2"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB3"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(四)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB4"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(五)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB5"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(六)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB6"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(七)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB7"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(八)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB8"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(九)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB9"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB10"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十一)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB11"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十二)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB12"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十三)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB13"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十四)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB14"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十五)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB15"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十六)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB16"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十七)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB17"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十八)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB18"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(十九)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB19"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB20"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十一)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB21"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十二)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB22"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十三)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB23"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十四)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB24"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十五)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB25"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十六)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB26"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十七)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB27"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十八)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB28"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(二十九)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB29"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB30"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十一)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB31"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十二)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB32"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十三)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB33"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十四)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB34"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十五)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB35"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十六)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB36"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十七)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB37"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十八)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB38"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(三十九)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB39"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!---->
+    <test name="P2P_PPM模式下-兜底(四十)用户购买B系列手机" junit="false" verbose="3" parallel="false" thread-count="5" annotations="javadoc" time-out="6000000" enabled="true" skipfailedinvocationcounts="true" preserve-order="true" allow-return-values="true">
+        <classes>
+            <class name="JYBTestFallback.P2P_PPM_Mobile_SeriesB40"/>
+        </classes>
+    </test>
+    <!--—————————————————————————————————————————————————-->
+    <!-- 调用的监听 -->    
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+        <!--"org.testng.internal org.testng.TestRunner org.testng.SuiteRunner org.testng.remote.RemoteTestNG org.testng.TestNG sun.reflect java.lang"--> 
+        <!--"org.testng.reporters.EmailableReporter2,org.testng.reporters.jq.Main,org.testng.reporters.SuiteHTMLReporter,org.testng.reporters.XMLReporter,org.testng.reporters.JUnitReportReporter"--> 
+    </listeners>      
+</suite>

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<unit name="JYB_Formal" desc="即有宝生产环境试运行测试">
+    
+    <!--【操作注意事项】
+        0.执行Case前,需设置城市所绑定的合作模式,当前为"P2P_DR"
+        1.执行Case前,需设置登录账号和密码,当前账号为"666666",密码为"612426"
+        2.执行Case前,需设置商品门店,当前门店为"11000088888 - 安科达科技有限公司（门店名称）"
+        3.执行Case前,需设置商品类型,当前类型为"手机"
+        4.执行Case前,需设置产品版本,当前类型为"系列A"
+        5.执行Case前,需设置商品总额,当前总额为"5000"
+        6.执行Case前,需设置首付总额,当前总额为"2000"
+        7.执行Case前,需设置分期期数,当前期数为"18"期
+        8.执行Case前,需设置申请时间,当前时间为"2017-09-14"
+        9.执行Case前,需设置首次还款日,当前还款日为"2017年10月14日"
+        10.执行Case前,需设置期数序号,当前序号为"18期"
+        11.执行Case前,需设置每期还款额,当前还款额为"317.0"
+        12.执行Case前,需设置还款日,当前还款日为"2019.03.14",根据所选择的分期数定义,一般为（申请时间的月份+分期数）
+        13.执行Case前,需设置身份证姓名,当前姓名为"时雪"
+        14.执行Case前,需设置身份证号码,当前身份证号码为"141023198202231927"
+    -->
+    <case 
+        name="前置条件" 
+        desc="验证在数据库中,执行对应SQL语句,可以正常执行成功">
+        
+    </case>
+  
+	<case 
+	    name="case1" 
+	    desc="验证在Android系统中,首次安装启动即有宝APP后,引导页显示正常且可以滑动至最后一页">
+	    <step action="click" locator="text=允许" desc="点击网络或卫星定位权限的允许按钮"/>
+		<step action="slide-left"  details="duration:500;num:3;" desc="以每次500毫秒的时间,向左滑动3次至引导页最后一页"/>
+		<step action="check" locator="text=开始体验" value="开始体验" message="安装启动失败(实际结果和预期结果不一致)" screenshot="Case1" desc="检查首次启动即有宝APP向左滑动三次引导页后,是否成功进入引导页最后一页"/>
+	</case>
+	
+	<case 
+	    name="case2" 
+	    desc="验证在引导页最后一页界面,点击开始体验按钮后,可以正常进入登录界面">
+	    <step action="click" locator="resource-id=com.giveu.corder:id/tv_into" desc="点击开始体验按钮"/>
+	    <step action="check" locator="resource-id=com.giveu.corder:id/tv_login" value="登录" message="进入登录界面失败(实际结果和预期结果不一致)" screenshot="Case2" desc="检查在引导页最后一页点击开始体验按钮后,是否成功进入登录界面"/>      
+	</case>
+	
+	<case 
+	    name="case3" 
+	    desc="验证在登录界面,输入正确的账号和密码,已连接网络和开启GPS定位权限时,点击登录按钮后,可以正常登录并进入设置解锁密码界面">
+	    <step action="input" locator="resource-id=com.giveu.corder:id/et_account" value="666666" desc="输入正确登录账号"/>
+	    <step action="input" locator="resource-id=com.giveu.corder:id/et_pwd" value="612425" desc="输入正确登录密码"/>
+	    <step action="click" locator="resource-id=com.giveu.corder:id/tv_login" desc="点击登录按钮"/>
+	    <step action="check" locator="resource-id=com.giveu.corder:id/tv_set" value="立即设置"  message="登录失败(实际结果和预期结果不一致)" screenshot="case3" desc="检查在登录界面,输入正确的账号和密码,已连接网络和开启GPS定位权限时,点击登录按钮后,是否可以正常登录并进入设置解锁密码界面"/>    
+	</case>
+
+	<case 
+	    name="case4" 
+	    desc="验证在新建订单界面,选择输入对应产品信息,点击下一步按钮后,可以正常进入产品列表界面">
+		<step action="click" locator="text=暂不" desc="点击暂不按钮"/>
+		<step action="click" locator="text=确定" desc="点击授权提示的确定按钮"/>
+		<step action="click" locator="text=允许" desc="点击通讯录权限的允许按钮"/>
+     	<step action="click" locator="text=商品门店" desc="点击商品门店选项"/>
+		<step action="click" locator="text=11000088888 - 安科达科技有限公司（门店名称）" desc="选择安科达科技有限公司商品门店"/>
+		<step action="click" locator="text=商品类型" desc="点击商品类型选项"/>
+		<step action="click" locator="text=手机" desc="选择手机"/>
+		<step action="click" locator="text=产品版本" desc="点击产品版本选项"/>
+		<step action="click" locator="text=系列A" desc="选择系列A"/>
+		<step action="click" locator="text=产品类型" desc="点击产品类型选项"/>
+		<step action="click" locator="text=非学生产品" desc="选择非学生产品"/>
+		<step action="input" locator="text=请输入商品总额" value="5000" desc="输入商品总额5000"/>
+		<step action="input" locator="text=请输入首付总额" value="2000" desc="输入首付总额2000"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>	
+		<step action="slide-down" details="duration:500;num:2;" desc="以每次500毫秒的时间,向下滑动2次"/>
+		<step action="check" locator="text=选择分期" value="选择分期" message="进入产品列表界面失败(实际结果和预期结果不一致)" screenshot="case4" desc="检查在新建订单界面,选择输入对应产品信息,点击下一步按钮后,是否可以正常进入产品列表界面"/>			
+	</case>
+	
+	<case 
+	    name="case5" 
+	    desc="验证在产品列表界面,点击保险/权益包费用选项后,可以正常打开网页协议,且内容显示正确">	
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_insurance_fee" desc="点击保险费用选项"/>
+		<step action="check-view" locator="content-desc=安心宝服务须知" value="安心宝服务须知" message="打开保险网页协议失败(实际结果和预期结果不一致)" screenshot="case5" desc="检查在产品列表界面,点击保险费用选项后,是否可以正常打开网页协议"/>						
+	    <step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_power_fee" desc="点击权益包费用选项"/>
+		<step action="check-view" locator="content-desc=无忧还权益包使用须知" value="无忧还权益包使用须知" message="打开权益包网页协议失败(实际结果和预期结果不一致)" screenshot="case5" desc="检查在产品列表界面,点击权益包费用选项后,是否可以正常打开网页协议"/>					
+	</case>
+			
+	<case 
+	    name="case6" 
+	    desc="验证在商品信息界面,选择输入对应商品信息,点击手机健康/延保费用选项后,可以正常打开网页协议,且内容显示正确">	
+	    <step action="return" details="num:1" desc="点击返回按钮1次"/>
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>		
+		<step action="click" locator="text=商品小类" desc="点击商品小类选项"/>
+		<step action="click" locator="text=手机" desc="选择手机"/>
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_health_fee" desc="点击手机健康服务费用选项"/>
+		<step action="check-view" locator="content-desc=手机健康服务须知" value="手机健康服务须知" message="打开手机健康服务网页协议失败(实际结果和预期结果不一致)" screenshot="case6" desc="检查在商品信息界面,选择输入对应商品信息,点击手机健康费用选项后,是否可以正常打开网页协议,且内容显示正确"/>
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_secure_fee" desc="点击手机延保服务费用选项"/>
+		<step action="check-view" locator="content-desc=手机延保服务须知" value="手机延保服务须知" message="打开手机延保服务须知网页协议失败(实际结果和预期结果不一致)" screenshot="case6" desc="检查在商品信息界面,选择输入对应商品信息,点击手机延保费用选项后,是否可以正常打开网页协议,且内容显示正确"/>				
+	</case>			
+		
+	<case 
+	    name="case7" 
+	    desc="验证在绑定银行卡界面,点击查看支持银行按钮,可以正常打开支持银行卡列表界面,且内容显示正确">	
+	    <step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/rl_click_right" desc="点击返回主界面按钮" />
+		<step action="click" locator="text=订单" desc="点击订单模块" />
+		<step action="click" locator="text=待申请" desc="点击待申请列" />
+		<step action="click" locator="text=编辑" desc="点击编辑按钮" />
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=查看支持银行" desc="点击查看支持银行"/>
+        <step action="check" locator="text=中国工商银行" value="中国工商银行" message="打开支持银行卡列表失败(实际结果和预期结果不一致)" screenshot="case7" desc="检查在绑定银行卡界面,点击查看支持银行按钮,是否可以正常打开支持银行卡列表界面,且内容显示正确"/>
+	</case>
+	
+	<case 
+	    name="case8" 
+	    desc="验证在短信征信授权界面,点击征信授权协议按钮后,可以正常打开征信授权协议,且内容显示正确">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="click" locator="text=允许" desc="点击相机权限的允许按钮"/>
+		<step action="click" locator="text=短信征信授权" desc="点击短信征信授权选项"/>
+		<step action="click" locator="text=《征信授权协议》" desc="点击征信授权协议按钮"/>
+		<step action="check-view" locator="content-desc=征信授权书" value="征信授权书" message="打开征信授权书协议失败(实际结果和预期结果不一致)" screenshot="case8" desc="检查在短信征信授权界面,点击征信授权协议按钮后,是否可以正常打开征信授权协议,且内容显示正确"/>
+	</case>
+
+	<case 
+	    name="case9" 
+	    desc="验证在订单详情界面,点击底部对应的合同协议后,可以正常打开,且内容显示正确">
+		<step action="return" details="num:2" desc="点击返回按钮2次"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/rl_click_right" desc="点击返回主界面按钮" />
+		<step action="click" locator="text=审核通过" desc="点击审核通过列"/>
+		<step action="click" locator="text=现行" desc="点击现行列"/>
+		<step action="click" locator="text=时雪" desc="点击客户姓名为时雪的合同"/> 
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/> 
+		<step action="click" locator="text=《消费贷款申请表》" desc="点击消费贷款申请表协议"/>
+		<step action="check-view" locator="content-desc=合同号：14149441004" value="合同号：14149441004" message="进入消费贷款申请表界面失败(实际结果和预期结果不一致)" screenshot="case9" desc="检查在订单详情界面,点击底部消费贷款申请表合同协议后,是否可以正常打开,且内容显示正确"/>
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="text=《还款须知》" desc="点击还款须知协议"/>
+		<step action="check-view" locator="content-desc=贷款本金：3000" value="贷款本金：3000" message="进入还款须知表界面失败(实际结果和预期结果不一致)" screenshot="case9" desc="检查在订单详情界面,点击底部还款须知合同协议后,是否可以正常打开,且内容显示正确"/>
+	</case>
+	
+	<case 
+	    name="case_10" 
+	    desc="验证在我的界面,点击我的通知选项后,可以正常打开,且内容显示正确">
+		<step action="return" details="num:2" desc="点击返回按钮2次"/>	
+		<step action="click" locator="text=我的" desc="点击我的模块"/>
+		<step action="click" locator="text=我的通知" desc="点击我的通知选项"/>
+		<step action="check" locator="text=阅读全文" value="阅读全文" message="打开我的通知界面失败(实际结果和预期结果不一致)" screenshot="case_10" desc="检查在我的界面,点击我的通知选项后,是否可以正常打开,且内容显示正确"/>
+	</case>
+	
+	<case 
+	    name="case_11" 
+	    desc="验证在我的界面,点击我的通知选项后,可以正常打开,且内容显示正确">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="text=我的报表" desc="点击我的报表选项"/>
+		<step action="check-view" locator="content-desc=业绩" value="业绩" message="打开我的报表界面失败(实际结果和预期结果不一致)" screenshot="case_11" desc="检查在我的界面,点击我的报表选项后,是否可以正常打开,且内容显示正确"/>
+	</case>
+	
+	<case 
+	    name="case_12" 
+	    desc="验证在我的界面,点击晨星荟选项后,可以正常打开,且内容显示正确">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="text=晨星荟" desc="点击晨星荟选项"/>
+		<step action="check-view" locator="content-desc=名人堂" value="名人堂" message="打开晨星荟界面失败(实际结果和预期结果不一致)" screenshot="case_12" desc="检查在我的界面,点击晨星荟选项后,是否可以正常打开,且内容显示正确"/>
+	</case>
+	
+	<case 
+	    name="case_13" 
+	    desc="验证在我的界面,点击我的门店选项,选择对应时间段后,可以正常搜索出门店数据">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="text=我的门店" desc="点击我的门店选项"/>
+		<!--<step action="click" locator="resource-id=com.giveu.corder:id/ll_begin_date" desc="点击开始时间选项"/>
+		<step action="slide-down" locator="resource-id=com.giveu.corder:id/wl1" details="duration:500;num:1;amp:0.3" desc="在年份列中,向下滑动1次,选中2016年" />
+		<step action="slide-up" locator="resource-id=com.giveu.corder:id/wl2" details="duration:500;num:1;amp:0.3" desc="在月份列中,向上滑动1次,选中10月" />  -->
+		<step action="check" locator="text=安科达科技有限公司（门店名称）" value="安科达科技有限公司（门店名称）" message="搜索门店信息失败(实际结果和预期结果不一致)" screenshot="case_13" desc="检查在我的界面,点击我的门店选项,选择对应时间段后,是否可以正常搜索出门店数据"/>
+	</case>
+	
+	<case 
+	    name="case_14" 
+	    desc="验证在我的界面,点击推广钱包选项后,可以正常显示对应二维码">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>
+		<step action="slide-up" details="duration:500;num:1;" desc="以每次500毫秒的时间,向上滑动1次"/> 	
+		<step action="click" locator="text=推广钱包" desc="点击推广钱包选项"/>
+		<step action="check" locator="text=推广钱包" value="推广钱包" message="二维码显示失败(实际结果和预期结果不一致)" screenshot="case_14" desc="检查在我的界面,点击推广钱包选项后,是否可以正常显示对应二维码"/>
+	</case>
+	
+	<case 
+	    name="case_15" 
+	    desc="验证在我的界面,点击签到按钮,输入和上传对应备注和照片,点击提交签到按钮后,可以正常签到成功">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_location" desc="点击签到按钮"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_sign" desc="点击未签到按钮"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_remark" value="今天天气真好!!!" desc="输入签到备注"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/iv_photo" desc="点击相机按钮"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_shutter_button_internal" desc="点击拍照按钮"/>
+		<step action="click" locator="resource-id=com.android.camera:id/v6_btn_done" desc="点击拍照确定按钮"/>
+		<step action="wait-forced" value="2000" desc="强制等待2秒"/>
+		<step action="click" locator="text=提交签到" desc="点击提交签到按钮"/>
+		<step action="check" locator="text=小即已成功帮您签到了~" value="小即已成功帮您签到了~" message="签到失败(实际结果和预期结果不一致)" screenshot="case_15" desc="检查在我的界面,点击签到按钮,输入和上传对应备注和照片,点击提交签到按钮后,是否可以正常签到成功"/>
+		<step action="click" locator="text=谢谢小即" desc="点击谢谢小即按钮"/>
+	</case>
+</unit>
+
+<!--<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<unit name="JYB_Formal" desc="即有宝生产环境试运行测试">
+    
+    【操作注意事项】
+        0.执行Case前,需设置城市所绑定的合作模式,当前为"P2P_DR"
+        1.执行Case前,需设置登录账号和密码,当前账号为"666666",密码为"612426"
+        2.执行Case前,需设置商品门店,当前门店为"11000088888 - 安科达科技有限公司（门店名称）"
+        3.执行Case前,需设置商品类型,当前类型为"手机"
+        4.执行Case前,需设置产品版本,当前类型为"系列A"
+        5.执行Case前,需设置商品总额,当前总额为"5000"
+        6.执行Case前,需设置首付总额,当前总额为"2000"
+        7.执行Case前,需设置分期期数,当前期数为"18"期
+        8.执行Case前,需设置申请时间,当前时间为"2017-09-14"
+        9.执行Case前,需设置首次还款日,当前还款日为"2017年10月14日"
+        10.执行Case前,需设置期数序号,当前序号为"18期"
+        11.执行Case前,需设置每期还款额,当前还款额为"317.0"
+        12.执行Case前,需设置还款日,当前还款日为"2019.03.14",根据所选择的分期数定义,一般为（申请时间的月份+分期数）
+        13.执行Case前,需设置身份证姓名,当前姓名为"时雪"
+        14.执行Case前,需设置身份证号码,当前身份证号码为"141023198202231927"
+    
+    <case 
+        name="前置条件" 
+        desc="验证在数据库中,执行对应SQL语句,可以正常执行成功">
+        
+    </case>
+  
+	<case 
+	    name="case1" 
+	    desc="验证在Android系统中,首次安装启动即有宝APP后,引导页显示正常且可以滑动至最后一页">
+		<step action="slide-left"  details="duration:500;num:3;" desc="以每次500毫秒的时间,向左滑动3次至引导页最后一页"/>
+		<step action="check" locator="text=开始体验" value="开始体验" message="安装启动失败(实际结果和预期结果不一致)" screenshot="Case1" desc="检查首次启动即有宝APP向左滑动三次引导页后,是否成功进入引导页最后一页"/>
+	</case>
+	
+	<case 
+	    name="case2" 
+	    desc="验证在引导页最后一页界面,点击开始体验按钮后,可以正常进入登录界面">
+	    <step action="click" locator="resource-id=com.giveu.corder:id/tv_into" desc="点击开始体验按钮"/>
+	    <step action="click" locator="text=允许" desc="点击网络或卫星定位权限的允许按钮"/>
+	    <step action="check" locator="resource-id=com.giveu.corder:id/tv_login" value="登录" message="进入登录界面失败(实际结果和预期结果不一致)" screenshot="Case2" desc="检查在引导页最后一页点击开始体验按钮后,是否成功进入登录界面"/>      
+	</case>
+	
+	<case 
+	    name="case3" 
+	    desc="验证在登录界面,输入正确的账号和密码,已连接网络和开启GPS定位权限时,点击登录按钮后,可以正常登录并进入设置解锁密码界面">
+	    <step action="input" locator="resource-id=com.giveu.corder:id/et_account" value="666666" desc="输入正确登录账号"/>
+	    <step action="input" locator="resource-id=com.giveu.corder:id/et_pwd" value="612425" desc="输入正确登录密码"/>
+	    <step action="click" locator="resource-id=com.giveu.corder:id/tv_login" desc="点击登录按钮"/>
+	    <step action="check" locator="resource-id=com.giveu.corder:id/tv_set" value="立即设置"  message="登录失败(实际结果和预期结果不一致)" screenshot="case3" desc="检查在登录界面,输入正确的账号和密码,已连接网络和开启GPS定位权限时,点击登录按钮后,是否可以正常登录并进入设置解锁密码界面"/>    
+	</case>
+
+	<case 
+	    name="case4" 
+	    desc="验证在新建订单界面,选择输入对应产品信息,点击下一步按钮后,可以正常进入产品列表界面">
+		<step action="click" locator="text=暂不" desc="点击暂不按钮"/>
+     	<step action="click" locator="text=商品门店" desc="点击商品门店选项"/>
+		<step action="click" locator="text=11000088888 - 安科达科技有限公司（门店名称）" desc="选择安科达科技有限公司商品门店"/>
+		<step action="click" locator="text=商品类型" desc="点击商品类型选项"/>
+		<step action="click" locator="text=手机" desc="选择手机"/>
+		<step action="click" locator="text=产品版本" desc="点击产品版本选项"/>
+		<step action="click" locator="text=系列A" desc="选择系列A"/>
+		<step action="click" locator="text=产品类型" desc="点击产品类型选项"/>
+		<step action="click" locator="text=非学生产品" desc="选择非学生产品"/>
+		<step action="input" locator="text=请输入商品总额" value="5000" desc="输入商品总额5000"/>
+		<step action="input" locator="text=请输入首付总额" value="2000" desc="输入首付总额2000"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>	
+		<step action="slide-down" details="duration:500;num:2;" desc="以每次500毫秒的时间,向下滑动2次"/>
+		<step action="check" locator="text=选择分期" value="选择分期" message="进入产品列表界面失败(实际结果和预期结果不一致)" screenshot="case4" desc="检查在新建订单界面,选择输入对应产品信息,点击下一步按钮后,是否可以正常进入产品列表界面"/>			
+	</case>
+	
+	<case 
+	    name="case5" 
+	    desc="验证在产品列表界面,点击保险/权益包费用选项后,可以正常打开网页协议,且内容显示正确">	
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_insurance_fee" desc="点击保险费用选项"/>
+		<step action="check" locator="content-desc=安心宝服务须知" value="安心宝服务须知" message="打开保险网页协议失败(实际结果和预期结果不一致)" screenshot="case5" desc="检查在产品列表界面,点击保险费用选项后,是否可以正常打开网页协议"/>						
+	    <step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_power_fee" desc="点击权益包费用选项"/>
+		<step action="check" locator="content-desc=无忧还权益包使用须知" value="无忧还权益包使用须知" message="打开权益包网页协议失败(实际结果和预期结果不一致)" screenshot="case5" desc="检查在产品列表界面,点击权益包费用选项后,是否可以正常打开网页协议"/>					
+	</case>
+			
+	<case 
+	    name="case6" 
+	    desc="验证在商品信息界面,选择输入对应商品信息,点击手机健康/延保费用选项后,可以正常打开网页协议,且内容显示正确">	
+	    <step action="return" details="num:1" desc="点击返回按钮1次"/>
+		<step action="slide-up" details="duration:500;num:3;" desc="以每次500毫秒的时间,向上滑动3次"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>		
+		<step action="click" locator="text=商品小类" desc="点击商品小类选项"/>
+		<step action="click" locator="text=手机" desc="选择手机"/>
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_health_fee" desc="点击手机健康服务费用选项"/>
+		<step action="check" locator="content-desc=手机健康服务须知" value="手机健康服务须知" message="打开手机健康服务网页协议失败(实际结果和预期结果不一致)" screenshot="case6" desc="检查在商品信息界面,选择输入对应商品信息,点击手机健康费用选项后,是否可以正常打开网页协议,且内容显示正确"/>
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_secure_fee" desc="点击手机延保服务费用选项"/>
+		<step action="check" locator="content-desc=手机延保服务须知" value="手机延保服务须知" message="打开手机延保服务须知网页协议失败(实际结果和预期结果不一致)" screenshot="case6" desc="检查在商品信息界面,选择输入对应商品信息,点击手机延保费用选项后,是否可以正常打开网页协议,且内容显示正确"/>				
+	</case>			
+		
+	<case 
+	    name="case7" 
+	    desc="验证在绑定银行卡界面,点击查看支持银行按钮,可以正常打开支持银行卡列表界面,且内容显示正确">	
+	    <step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/rl_click_right" desc="点击返回主界面按钮" />
+		<step action="click" locator="text=订单" desc="点击订单模块" />
+		<step action="click" locator="text=待申请" desc="点击待申请列" />
+		<step action="click" locator="text=编辑" desc="点击编辑按钮" />
+		<step action="click" locator="text=现居住市县" desc="点击现居住市县选项"/>
+		<step action="click" locator="text=河北" desc="在省份列中,选中河北省" />
+		<step action="click" locator="text=保定" desc="在城市列中,选中保定市" />
+		<step action="click" locator="text=高阳县" desc="在县镇列中,选中高阳县" />
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view" value="小店镇黄陵街道康怡小区2栋7单元" desc="输入客户现居住详细地址"/>
+		<step action="click" locator="text=教育程度" desc="点击教育程度选项"/>
+		<step action="click" locator="text=本科" desc="选择本科"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" value="8000" desc="输入客户个人月收入总额"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" value="2000" desc="输入客户个人月支出"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[3]" value="30000" desc="输入客户家庭月收入总额"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[4]" value="13244721532" desc="输入客户手机号码"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[5]" value="13244721532@qq.com" desc="输入客户邮箱"/>
+		<step action="slide-up" details="duration:500;num:1;"  desc="以每次500毫秒的时间,向上滑动1次"/>
+		<step action="click" locator="text=住房情况" desc="点击住房情况选项"/>
+		<step action="click" locator="text=自有房" desc="选择自有房"/>
+		<step action="click" locator="text=婚姻状况" desc="点击婚姻状况选项"/>
+		<step action="click" locator="text=未婚" desc="选择未婚"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/toggleSwitch" desc="勾选同步现居住地址选项"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view" value="广东深圳" desc="输入单位名称"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" value="即有分期" desc="输入单位名称"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" value="075588888888" desc="输入单位电话/手机"/>
+		<step action="click" locator="text=行业类别" desc="点击行业类别选项"/>
+		<step action="click" locator="text=军队" desc="选择军队"/>
+		<step action="click" locator="text=单位性质" desc="点击单位性质选项"/>
+		<step action="click" locator="text=私企" desc="选择私企"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[4]" value="信息科技部" desc="输入单位任职部门"/>
+		<step action="slide-up" details="duration:500;num:2;"  desc="以每次500毫秒的时间,向上滑动2次"/>
+		<step action="click" locator="text=职位" desc="点击职位选项"/>
+		<step action="click" locator="text=专业(技术)人员" desc="选择专业(技术)人员"/>
+		<step action="click" locator="text=入职时间" desc="点击入职时间选项"/>
+		<step action="click" locator="text=确定" desc="点击确定按钮"/>
+		<step action="click" locator="text=工作年限" desc="点击工作年限选项"/>
+		<step action="click" locator="text=1年" desc="选择1年"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view" value="时光" desc="输入客户家庭联系人姓名"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[1]" value="13128751295" desc="输入客户家庭联系人手机号"/>
+		<step action="click" locator="text=与本人关系" desc="点击家庭联系人与本人关系选项"/>
+		<step action="click" locator="text=父亲" desc="选择父亲"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[2]" value="时飞" desc="输入客户其他联系人姓名"/>
+		<step action="input" locator="resource-id=com.giveu.corder:id/et_edit_view[3]" value="13128751296" desc="输入客户其他联系人手机号"/>
+		<step action="click" locator="text=与本人关系[1]" desc="点击其他联系人与本人关系选项"/>
+		<step action="click" locator="text=兄弟" desc="选择兄弟"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=查看支持银行" desc="点击查看支持银行"/>
+        <step action="check" locator="text=中国工商银行" value="中国工商银行" message="打开支持银行卡列表失败(实际结果和预期结果不一致)" screenshot="case7" desc="检查在绑定银行卡界面,点击查看支持银行按钮,是否可以正常打开支持银行卡列表界面,且内容显示正确"/>
+	</case>
+	
+	<case 
+	    name="case8" 
+	    desc="验证在短信征信授权界面,点击征信授权协议按钮后,可以正常打开征信授权协议,且内容显示正确">
+		<step action="click" locator="resource-id=com.giveu.corder:id/et_cardNumber" desc="点击存储卡号输入框"/>
+		<step action="clear" locator="resource-id=com.giveu.corder:id/et_cardNumber" desc="清空存储卡号输入框"/>
+		<step action="akc" details="key:13" desc="点击Android系统搜狗输入法键盘,6键"/>
+		<step action="akc" details="key:9" desc="点击Android系统搜狗输入法键盘,2键"/>
+		<step action="akc" details="key:8" desc="点击Android系统搜狗输入法键盘,1键"/>
+		<step action="akc" details="key:14" desc="点击Android系统搜狗输入法键盘,7键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:9" desc="点击Android系统搜狗输入法键盘,2键"/>
+		<step action="akc" details="key:13" desc="点击Android系统搜狗输入法键盘,6键"/>
+		<step action="akc" details="key:14" desc="点击Android系统搜狗输入法键盘,7键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:16" desc="点击Android系统搜狗输入法键盘,9键"/>
+		<step action="akc" details="key:15" desc="点击Android系统搜狗输入法键盘,8键"/>
+		<step action="akc" details="key:13" desc="点击Android系统搜狗输入法键盘,6键"/>
+		<step action="akc" details="key:10" desc="点击Android系统搜狗输入法键盘,3键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="akc" details="key:9" desc="点击Android系统搜狗输入法键盘,2键"/>
+		<step action="akc" details="key:7" desc="点击Android系统搜狗输入法键盘,0键"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="resource-id=com.giveu.corder:id/tv_bankBranch" desc="点击开户行省/直辖市选项"/>
+		<step action="click" locator="text=山西" desc="在省份列中,选中山西省" />
+		<step action="click" locator="text=临汾" desc="在城市列中,选中临汾市" />
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=请选择..." desc="点击评定内部代码选项"/>
+		<step action="click" locator="text=1" desc="选择内部代码1"/>
+		<step action="click" locator="text=下一步" desc="点击下一步按钮"/>
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="click" locator="text=跳过认证" desc="点击跳过认证按钮"/>
+		<step action="click" locator="text=短信征信授权" desc="点击短信征信授权选项"/>
+		<step action="click" locator="text=《征信授权协议》" desc="点击征信授权协议按钮"/>
+		<step action="check" locator="content-desc=征信授权书" value="征信授权书" message="打开征信授权书协议失败(实际结果和预期结果不一致)" screenshot="case8" desc="检查在短信征信授权界面,点击征信授权协议按钮后,是否可以正常打开征信授权协议,且内容显示正确"/>
+	</case>
+
+	<case 
+	    name="case9" 
+	    desc="验证在订单详情界面,点击底部对应的合同协议后,可以正常打开,且内容显示正确">
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="resource-id=com.giveu.corder:id/rl_click_right" desc="点击返回主界面按钮" />
+		<step action="click" locator="text=审核通过" desc="点击审核通过列"/>
+		<step action="click" locator="text=时雪" desc="点击客户姓名为时雪的合同"/> 
+		<step action="slide-up" details="duration:500;num:2;" desc="以每次500毫秒的时间,向上滑动2次"/> 
+		<step action="click" locator="text=《消费贷款申请表》" desc="点击消费贷款申请表协议"/>
+		<step action="check" locator="content-desc=合同号：14149441004" value="合同号：14149441004" message="进入消费贷款申请表界面失败(实际结果和预期结果不一致)" screenshot="case9" desc="检查在订单详情界面,点击底部消费贷款申请表合同协议后,是否可以正常打开,且内容显示正确"/>
+		<step action="return" details="num:1" desc="点击返回按钮1次"/>	
+		<step action="click" locator="text=《还款须知》" desc="点击还款须知协议"/>
+		<step action="check" locator="content-desc=贷款本金：3000" value="贷款本金：3000" message="进入还款须知表界面失败(实际结果和预期结果不一致)" screenshot="case9" desc="检查在订单详情界面,点击底部还款须知合同协议后,是否可以正常打开,且内容显示正确"/>
+	</case>	
+</unit>-->
